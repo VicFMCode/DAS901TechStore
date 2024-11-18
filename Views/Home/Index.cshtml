@@ -1,8 +1,19 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row mt-4">
+    <!-- Botón para Ver Estadísticas -->
+    <div class="col-md-6">
+        <a href="/Reports/Statistics" class="btn btn-primary btn-lg w-50">
+            Ver Estadísticas
+        </a>
+    </div>
+    <!-- Botón para Generar Informes -->
+    <div class="col-md-6">
+        <a href="/Reports/LowStockReport" class="btn btn-secondary btn-lg w-50">
+            Generar Informe - Productos con Menor Stock
+        </a>
+    </div>
+    <div class="col-md-6 mt-3">
+        <a href="/Reports/TopSellingReport" class="btn btn-info btn-lg w-50">
+            Generar Informe - Productos Más Vendidos
+        </a>
+    </div>
 </div>
