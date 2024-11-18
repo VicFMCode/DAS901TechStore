@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewData["Title"] = "Generar Informes";
 }
 
@@ -6,4 +6,24 @@
     <h2>Generar Informes</h2>
     <p>Selecciona las opciones para generar informes detallados sobre tu inventario.</p>
     <!-- Aquí puedes agregar enlaces o formularios para generar informes -->
+    <div class="accordion-collapse">
+        <!-- Botón para Ver Estadísticas -->
+        <div class="col-md-6">
+            <a href="/Reports/Statistics" class="btn btn-primary btn-lg w-40">
+                Ver Estadísticas
+            </a>
+        </div>
+        <!-- Botón para Generar Informes -->
+        <div class="col-md-6 mt-1">
+            <a href="/Reports/LowStockReport" class="btn btn-primary btn-lg w-40">
+                Productos con Menor Stock
+            </a>
+        </div>
+        <div class="col-md-6 mt-1">
+            <a href="/Reports/TopSellingReport" class="btn btn-primary btn-lg w-40">
+                Productos Más Vendidos
+            </a>
+        </div>
+    </div>
+
 </div>
