@@ -1,4 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using TechStoreInventory.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+// Redirigir logs a la consola
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+
+
+builder.Services.AddDbContext<TechStoreContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("TechStoreConnection")));
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
