@@ -1,0 +1,61 @@
+﻿@model TechStoreInventory.Models.Celular
+
+<h1>Editar Producto</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="ProductID" />
+
+    <div class="form-group">
+        <label>Marca</label>
+        <input asp-for="Marca" class="form-control" />
+        <span asp-validation-for="Marca" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Modelo</label>
+        <input asp-for="Modelo" class="form-control" />
+        <span asp-validation-for="Modelo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Chip</label>
+        <input asp-for="Chip" class="form-control" />
+        <span asp-validation-for="Chip" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Capacidad (GB)</label>
+        <input asp-for="Capacidad_in_GB" class="form-control" />
+        <span asp-validation-for="Capacidad_in_GB" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Cámara</label>
+        <input asp-for="Camara" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Color</label>
+        <input asp-for="Color" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Pantalla</label>
+        <input asp-for="Pantalla" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Precio</label>
+        <input asp-for="Precio" class="form-control" />
+        <span asp-validation-for="Precio" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Existencias</label>
+        <input asp-for="Existencias" class="form-control" />
+        <span asp-validation-for="Existencias" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    <a href="@Url.Action("Index", "Celulares")" class="btn btn-secondary">Cancelar</a>
+</form>

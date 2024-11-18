@@ -1,0 +1,77 @@
+﻿@model IEnumerable<TechStoreInventory.Models.Celular>
+
+<h1>Filtro</h1>
+
+
+
+<!-- Formulario de Búsqueda y Filtros -->
+<form asp-action="Index" method="get" class="mb-4">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="searchString">Buscar por Marca o Modelo</label>
+            <input type="text" name="searchString" id="searchString" class="form-control" value="@ViewData["searchString"]" placeholder="Buscar...">
+        </div>
+
+        <div class="form-group col-md-2">
+            <label for="minPrice">Precio Mínimo</label>
+            <input type="number" name="minPrice" id="minPrice" class="form-control" value="@ViewData["minPrice"]" step="0.01" min="0">
+        </div>
+
+        <div class="form-group col-md-2">
+            <label for="maxPrice">Precio Máximo</label>
+            <input type="number" name="maxPrice" id="maxPrice" class="form-control" value="@ViewData["maxPrice"]" step="0.01" min="0">
+        </div>
+
+        <div class="form-group col-md-2">
+            <label for="minQuantity">Existencias Mínimas</label>
+            <input type="number" name="minQuantity" id="minQuantity" class="form-control" value="@ViewData["minQuantity"]" min="0">
+        </div>
+
+        <div class="form-group col-md-2">
+            <label for="maxQuantity">Existencias Máximas</label>
+            <input type="number" name="maxQuantity" id="maxQuantity" class="form-control" value="@ViewData["maxQuantity"]" min="0">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Aplicar</button>
+    <a asp-action="Index" class="btn btn-secondary">Limpiar</a>
+</form>
+
+<h1>Lista de Productos</h1>
+
+<!-- Botón para agregar un nuevo producto -->
+<div class="mb-4">
+    <a asp-action="Create" class="btn btn-success">Agregar Producto</a>
+</div>
+<!-- Tabla de Productos -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Chip</th>
+            <th>Capacidad</th>
+            <th>Precio</th>
+            <th>Existencias</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var celular in Model)
+        {
+            <tr>
+                <td>@celular.Marca</td>
+                <td>@celular.Modelo</td>
+                <td>@celular.Chip</td>
+                <td>@celular.Capacidad_in_GB GB</td>
+                <td>$@celular.Precio.ToString("0.00")</td>
+                <td>@celular.Existencias</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@celular.ProductID" class="btn btn-info btn-sm">Detalles</a>
+                    <a asp-action="Edit" asp-route-id="@celular.ProductID" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@celular.ProductID" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

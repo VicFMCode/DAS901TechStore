@@ -1,0 +1,15 @@
+﻿@model TechStoreInventory.Models.Celular
+
+<h1>Eliminar Producto</h1>
+
+<div class="alert alert-warning">
+    <h4>¿Estás seguro de que deseas eliminar este producto?</h4>
+    <p><strong>@Model.Marca - @Model.Modelo</strong></p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="ProductID" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="@Url.Action("Index", "Celulares")" class="btn btn-secondary">Cancelar</a>
+</form>
+

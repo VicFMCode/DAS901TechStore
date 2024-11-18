@@ -1,0 +1,21 @@
+﻿@model TechStoreInventory.Models.Celular
+
+<h1>Detalles del Producto</h1>
+
+<div class="card">
+    <div class="card-header">
+        <h3>@Model.Marca - @Model.Modelo</h3>
+    </div>
+    <div class="card-body">
+        <p><strong>Chip:</strong> @Model.Chip</p>
+        <p><strong>Capacidad:</strong> @Model.Capacidad_in_GB GB</p>
+        <p><strong>Cámara:</strong> @Model.Camara</p>
+        <p><strong>Color:</strong> @Model.Color</p>
+        <p><strong>Pantalla:</strong> @Model.Pantalla</p>
+        <p><strong>Precio:</strong> $@Model.Precio.ToString("0.00")</p>
+        <p><strong>Existencias:</strong> @Model.Existencias</p>
+    </div>
+    <div class="card-footer">
+        <a href="@Url.Action("Index", "Celulares")" class="btn btn-secondary">Volver</a>
+    </div>
+</div>
