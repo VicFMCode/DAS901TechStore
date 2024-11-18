@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Estadísticas del Inventario";
+}
+
+<h2>Estadísticas del Inventario</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <h4>Total de Productos</h4>
+        <p>@ViewBag.TotalProducts</p>
+    </div>
+    <div class="col-md-6">
+        <h4>Valor Total del Inventario</h4>
+        <p>@ViewBag.TotalInventoryValue</p>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-12">
+        <canvas id="inventoryChart"></canvas>
+    </div>
+</div>
+
+<!-- Cargar Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Obtener el contexto del canvas
+    const ctx = document.getElementById('inventoryChart').getContext('2d');
+
+    // Verificar que ctx no sea null
+    if (ctx) {
+        const chart = new Chart(ctx, {
+            type: 'bar', // Tipo de gráfico
+            data: {
+                labels: ['Productos en Inventario', 'Valor Total'], // Etiquetas de las barras
+                datasets: [{
+                    label: 'Estadísticas del Inventario',
+                    data: [@ViewBag.TotalProducts, @ViewBag.TotalInventoryValueNumeric],
+                    backgroundColor: ['#4CAF50', '#2196F3'], // Colores de las barras
+                    // Ajustes de la barra para mejorar la visibilidad
+                    borderWidth: 1,
+                    borderColor: '#000000',
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            // Establecer el máximo en un valor apropiado para una mejor visualización
+                            max: Math.max(@ViewBag.TotalProducts, @ViewBag.TotalInventoryValueNumeric) * 1.2, // Ajusta el factor para la escala
+                            stepSize: 500 // Ajustar para los incrementos del eje Y
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Estadísticas del Inventario'
+                    }
+                }
+            }
+        });
+    } else {
+        console.error("El canvas no se pudo encontrar.");
+    }
+</script>
